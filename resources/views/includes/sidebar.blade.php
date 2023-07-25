@@ -7,6 +7,20 @@
                     <a href="index.html"><i class
                         ="menu-icon fa fa-laptop"></i>Dashboard </a>
                 </li>
+                <li class="menu-title">Hak Akses</li><!-- /.menu-title -->
+                <li class="">
+                    <a href="#"> <i class="menu-icon fa fa-list"></i>Lihat Hak Akses</a>
+                </li>
+                <li class="">
+                    <a href="#"> <i class="menu-icon fa fa-plus"></i>Tambah Hak Akses</a>
+                </li>
+                <li class="menu-title">Pengguna</li><!-- /.menu-title -->
+                <li class="">
+                    <a href="#"> <i class="menu-icon fa fa-list"></i>Lihat Pengguna</a>
+                </li>
+                <li class="">
+                    <a href="#"> <i class="menu-icon fa fa-plus"></i>Tambah Pengguna</a>
+                </li>
                 <li class="menu-title">Barang</li><!-- /.menu-title -->
                 <li class="">
                     <a href="#"> <i class="menu-icon fa fa-list"></i>Lihat Barang</a>
@@ -15,17 +29,20 @@
                     <a href="#"> <i class="menu-icon fa fa-plus"></i>Tambah Barang</a>
                 </li>
 
-                <li class="menu-title">Foto Barang</li><!-- /.menu-title -->
+                <li class="menu-title">Pembelian</li><!-- /.menu-title -->
                 <li class="">
-                    <a href="#"> <i class="menu-icon fa fa-list"></i>Lihat Foto Barang</a>
+                    <a href="#"> <i class="menu-icon fa fa-list"></i>Lihat Pembelian</a>
                 </li>
                 <li class="">
-                    <a href="#"> <i class="menu-icon fa fa-plus"></i>Tambah Foto Barang</a>
+                    <a href="#"> <i class="menu-icon fa fa-plus"></i>Tambah Pembelian</a>
                 </li>
 
-                <li class="menu-title">Transaksi</li><!-- /.menu-title -->
+                <li class="menu-title">Penjualan</li><!-- /.menu-title -->
                 <li class="">
-                    <a href="#"> <i class="menu-icon fa fa-list"></i>Lihat Transaksi</a>
+                    <a href="#"> <i class="menu-icon fa fa-list"></i>Lihat Penjualan</a>
+                </li>
+                <li class="">
+                    <a href="#"> <i class="menu-icon fa fa-list"></i>Tambah Penjualan</a>
                 </li>
             </ul>
         </div><!-- /.navbar-collapse -->
