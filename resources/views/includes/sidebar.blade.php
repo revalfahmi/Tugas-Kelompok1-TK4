@@ -4,15 +4,15 @@
         <div id="main-menu" class="main-menu collapse navbar-collapse">
             <ul class="nav navbar-nav">
                 <li class="active">
-                    <a href="index.html"><i class
+                    <a href="#"><i class
                         ="menu-icon fa fa-laptop"></i>Dashboard </a>
                 </li>
                 <li class="menu-title">Hak Akses</li><!-- /.menu-title -->
                 <li class="">
-                    <a href="#"> <i class="menu-icon fa fa-list"></i>Lihat Hak Akses</a>
+                    <a href="{{ route('hak-akses.index') }}"> <i class="menu-icon fa fa-list"></i>Lihat Hak Akses</a>
                 </li>
                 <li class="">
-                    <a href="#"> <i class="menu-icon fa fa-plus"></i>Tambah Hak Akses</a>
+                    <a href="{{ route('hak-akses.create') }}"> <i class="menu-icon fa fa-plus"></i>Tambah Hak Akses</a>
                 </li>
                 <li class="menu-title">Pengguna</li><!-- /.menu-title -->
                 <li class="">
