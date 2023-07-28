@@ -20,7 +20,7 @@ class CreateUsersTable extends Migration
             $table->string('nama_depan');
             $table->string('nama_belakang');
             $table->string('no_hp');
-            $table->text('alamat');
+            $table->text('alamat')->nullable();
             $table->string('id_akses');
             $table->timestamp('email_verified_at')->nullable();
             $table->rememberToken();

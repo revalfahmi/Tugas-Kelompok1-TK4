@@ -17,4 +17,9 @@ class HakAkses extends Model
      * @var array
      */
     protected $guarded = ['id'];
+
+    public function user()
+    {
+        return $this->hasMany(User::class, 'id_akses');
+    }
 }
