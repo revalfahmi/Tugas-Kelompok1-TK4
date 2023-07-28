@@ -16,7 +16,7 @@ class CreateHakAksesTable extends Migration
         Schema::create('hak_akses', function (Blueprint $table) {
             $table->id();
             $table->string('nama_akses');
-            $table->string('keterangan');
+            $table->string('keterangan')->nullable();
             $table->timestamps();
 
             $table->softDeletes();
