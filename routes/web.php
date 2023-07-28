@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\HakAksesController;
+use App\Http\Controllers\PenggunaController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -18,3 +19,9 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [DashboardController::class, 'index']);
 
 Route::resource('hak-akses', HakAksesController::class);
+
+Route::resource('pengguna', PenggunaController::class);
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
