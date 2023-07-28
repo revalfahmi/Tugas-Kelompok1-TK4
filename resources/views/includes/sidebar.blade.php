@@ -16,10 +16,10 @@
                 </li>
                 <li class="menu-title">Pengguna</li><!-- /.menu-title -->
                 <li class="">
-                    <a href="#"> <i class="menu-icon fa fa-list"></i>Lihat Pengguna</a>
+                    <a href="{{ route('pengguna.index') }}"> <i class="menu-icon fa fa-list"></i>Lihat Pengguna</a>
                 </li>
                 <li class="">
-                    <a href="#"> <i class="menu-icon fa fa-plus"></i>Tambah Pengguna</a>
+                    <a href="{{ route('pengguna.create') }}"> <i class="menu-icon fa fa-plus"></i>Tambah Pengguna</a>
                 </li>
                 <li class="menu-title">Barang</li><!-- /.menu-title -->
                 <li class="">
