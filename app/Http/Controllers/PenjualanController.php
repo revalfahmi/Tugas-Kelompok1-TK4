@@ -2,11 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\HakAksesRequest;
-use App\Models\HakAkses;
+use App\Http\Requests\PenjualanRequest;
+use App\Models\Barang;
+use App\Models\Penjualan;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
-class HakAksesController extends Controller
+class PenjualanController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,12 +19,12 @@ class HakAksesController extends Controller
     {
         $this->middleware('auth');
     }
-    
+
     public function index()
     {
-        $items = HakAkses::all();
+        $items = Penjualan::with('user', 'barang')->get();
 
-        return view('pages.hakakses.index')->with([
+        return view('pages.penjualan.index')->with([
             'items' => $items
         ]);
     }
@@ -34,7 +36,11 @@ class HakAksesController extends Controller
      */
     public function create()
     {
-        return view('pages.hakakses.create');
+        $barangs = Barang::all();
+
+        return view('pages.penjualan.create')->with([
+            'barangs'   => $barangs
+        ]);
     }
 
     /**
@@ -43,12 +49,25 @@ class HakAksesController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(HakAksesRequest $request)
+    public function store(PenjualanRequest $request)
     {
+        $idUser = Auth::user()->id;
         $data = $request->all();
-        
-        HakAkses::create($data);
-        return redirect()->route('hak-akses.index');
+        $cekStock = Barang::where('id', $data['id_barang'])->value('stock');
+
+        if ($cekStock < (int)$data['jumlah_penjualan'])
+        {
+            return abort(403, 'Stock barang tidak mencukupi');
+        }
+
+        Penjualan::create([
+            'jumlah_penjualan'  => $data['jumlah_penjualan'],
+            'harga_jual'        => $data['harga_jual'],
+            'id_user'           => $idUser,
+            'id_barang'         => $data['id_barang']
+        ]);
+
+        return redirect()->route('penjualan.index');
     }
 
     /**
@@ -70,10 +89,12 @@ class HakAksesController extends Controller
      */
     public function edit($id)
     {
-        $item = HakAkses::findOrFail($id);
+        $items = Penjualan::with('barang')->findOrFail($id);
+        $barangs = Barang::all();
 
-        return view('pages.hakakses.edit')->with([
-            'item'  => $item
+        return view('pages.penjualan.edit')->with([
+            'items' => $items,
+            'barangs' => $barangs
         ]);
     }
 
@@ -84,14 +105,9 @@ class HakAksesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(HakAksesRequest $request, $id)
+    public function update(PenjualanRequest $request, $id)
     {
-        $data = $request->all();
-
-        $item = HakAkses::findOrFail($id);
-        $item->update($data);
-
-        return redirect()->route('hak-akses.index');
+        $item = Penjualan::
     }
 
     /**
@@ -102,9 +118,9 @@ class HakAksesController extends Controller
      */
     public function destroy($id)
     {
-        $item = HakAkses::findOrFail($id);
+        $item = Penjualan::findOrFail($id);
         $item->delete();
 
-        return redirect()->route('hak-akses.index');
+        return redirect()->route('penjualan.index');
     }
 }
