@@ -30,7 +30,7 @@
                 <div class="form-group">
                     <label for="id_barang" class="form-control-label">Barang</label>
                     
-                    <select name="id_barang" id="id_barang" class="form-control">
+                    <select name="id_barang" id="id_barang" class="form-control" disabled>
                         <option value="">Pilih Barang</option>
                         @foreach ($barangs as $barang)
                             <option value="{{ $barang->id }}" {{ $barang->id == $items->id_barang ? 'selected' : '' }}>{{ $barang->nama_barang }}</option>
