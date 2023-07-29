@@ -22,7 +22,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
 
-Auth::routes();
+Auth::routes(['register' => false]);
 
 Route::resource('hak-akses', HakAksesController::class);
 
