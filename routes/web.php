@@ -29,6 +29,4 @@ Route::resource('pengguna', UserController::class);
 
 Route::resource('penjualan', PenjualanController::class);
 
-Route::get('/', [DashboardController::class, 'index']);
-
 Route::resource('barang', BarangController::class);
