@@ -15,9 +15,9 @@
                     <img class="user-avatar rounded-circle" src="images/admin.jpg" alt="User Avatar">
                 </a>
 
-                <div class="user-menu dropdown-menu">
+                {{-- <div class="user-menu dropdown-menu">
                     <a class="nav-link" href="{{ route('logout') }}"><i class="fa fa-power -off"></i>Logout</a>
-                </div>
+                </div> --}}
             </div>
 
         </div>
