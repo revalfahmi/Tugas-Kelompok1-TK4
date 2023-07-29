@@ -23,7 +23,7 @@
                 </li>
                 <li class="menu-title">Barang</li><!-- /.menu-title -->
                 <li class="">
-                    <a href="#"> <i class="menu-icon fa fa-list"></i>Lihat Barang</a>
+                    <a href="barang"> <i class="menu-icon fa fa-list"></i>Lihat Barang</a>
                 </li>
                 <li class="">
                     <a href="#"> <i class="menu-icon fa fa-plus"></i>Tambah Barang</a>
