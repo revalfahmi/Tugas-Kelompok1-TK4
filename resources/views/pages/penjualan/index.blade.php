@@ -6,20 +6,17 @@
             <div class="col-12">
                 <div class="card">
                     <div class="card-body">
-                        <h4 class="box-title">Pengguna</h4>
+                        <h4 class="box-title">Penjualan</h4>
                     </div>
                     <div class="card-body--">
                         <div class="table-stats order-table ov-h">
                             <table class="table">
                                 <thead>
                                     <th>#</th>
-                                    <th>Nama Pengguna</th>
-                                    <th>Email Pengguna</th>
-                                    <th>Nama Depan</th>
-                                    <th>Nama Belakang</th>
-                                    <th>No Hp</th>
-                                    <th>Alamat</th>
-                                    <th>Hak Akses</th>
+                                    <th>Jumlah Penjualan</th>
+                                    <th>Harga Jual</th>
+                                    <th>User</th>
+                                    <th>Barang</th>
                                     <th>Action</th>
                                 </thead>
                                 <tbody>
@@ -28,18 +25,15 @@
                                     <?php $no++ ?>
                                     <tr>
                                         <td>{{ $no }}</td>
-                                        <td>{{ $item->nama_pengguna }}</td>
-                                        <td>{{ $item->email }}</td>
-                                        <td>{{ $item->nama_depan }}</td>
-                                        <td>{{ $item->nama_belakang }}</td>
-                                        <td>{{ $item->no_hp }}</td>
-                                        <td>{{ $item->alamat }}</td>
-                                        <td>{{ $item->hakAkses->nama_akses }}</td>
+                                        <td>{{ $item->jumlah_penjualan }}</td>
+                                        <td>{{ $item->harga_jual }}</td>
+                                        <td>{{ $item->user->nama_pengguna }}</td>
+                                        <td>{{ $item->barang->nama_barang }}</td>
                                         <td>
-                                            <a href="{{ route('pengguna.edit', $item->id) }}" class="href btn btn-primary btn-sm">
+                                            <a href="{{ route('penjualan.edit', $item->id) }}" class="href btn btn-primary btn-sm">
                                                 <i class="fa fa-pencil"></i>
                                             </a>
-                                            <form action="{{ route('pengguna.destroy', $item->id) }}" method="POST" class="d-inline">
+                                            <form action="{{ route('penjualan.destroy', $item->id) }}" method="POST" class="d-inline">
                                                 @csrf
                                                 @method('delete')
                                                 <button class="btn btn-danger btn-sm">

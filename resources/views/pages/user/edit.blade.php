@@ -19,6 +19,15 @@
                     @enderror
                 </div>
                 <div class="form-group">
+                    <label for="email" class="form-control-label">Email Pengguna</label>
+                    <input type="email" name="email" value="{{ old('email') ? old('email') : $items->email }}" class="form-control @error('email')
+                        is-invalid
+                    @enderror" disabled/>
+                    @error('email')
+                        <div class="text-muted">{{ $message }}</div>
+                    @enderror
+                </div>
+                <div class="form-group">
                     <label for="password" class="form-control-label">Password</label>
                     <input type="password" name="password" value="{{ old('password') ? old('password') : $items->password }}" class="form-control @error('password')
                         is-invalid

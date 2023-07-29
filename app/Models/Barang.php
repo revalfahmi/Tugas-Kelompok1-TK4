@@ -17,4 +17,9 @@ class Barang extends Model
      * @var array
      */
     protected $guarded = ['id'];
+
+    public function penjualan()
+    {
+        return $this->hasMany(Penjualan::class, 'id_barang');
+    }
 }
