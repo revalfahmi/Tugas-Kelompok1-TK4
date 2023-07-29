@@ -29,10 +29,10 @@
                                 <td>{{$item->harga_beli}}</td>
                                 <td class="text-center">
                                     <a class="href btn btn-primary btn-sm"
-                                        href="{{ route('pembelian.edit', $pembelian->id) }}">
+                                        href="{{ route('pembelian.edit', $item->id) }}">
                                         <i class="fa fa-pencil"></i>
                                     </a>
-                                    <form action="{{ route('pembelian.destroy', $pembelian->id) }}" method="POST"
+                                    <form action="{{ route('pembelian.destroy', $item->id) }}" method="POST"
                                         class="d-inline">
                                         @csrf
                                         @method('delete')

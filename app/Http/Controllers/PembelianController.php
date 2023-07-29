@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Pembelian;
 use App\Models\Barang;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class PembelianController extends Controller
 {
@@ -44,7 +45,36 @@ class PembelianController extends Controller
      */
     public function store(Request $request)
     {
-       
+        $idUser = Auth::user()->id;
+        $this->validate($request,[
+            'id_barang' => 'required',
+            'jumlah_pembelian' => 'required',
+            'harga_beli' => 'required'
+        ]);
+        $pembelian = new Pembelian;
+        $pembelian->id_user = $idUser;
+        $pembelian->id_barang = $request->input('id_barang');
+        $pembelian->jumlah_pembelian = $request->input('jumlah_pembelian');
+        $pembelian->harga_beli = $request->input('harga_beli');
+        $pembelian->save();
+
+        $barang = Barang::where('id', $request['id_barang'])->first();
+        $barang['stock'] = $barang['stock'] + $request['jumlah_pembelian'];
+        $barang->update();
+
+        if ($pembelian) {
+            return redirect()
+                ->route('pembelian.index')
+                ->with([
+                    'success' => 'Data berhasil ditambahkan'
+                ]);
+        } else {
+            return redirect()
+                ->route('pembelian.create')
+                ->with([
+                    'error' => 'Data gagal ditambahkan'
+                ]);
+        }
     }
 
     /**
@@ -66,7 +96,13 @@ class PembelianController extends Controller
      */
     public function edit($id)
     {
-        //
+        $items = Pembelian::with('barang')->findOrFail($id);
+        $barangs = Barang::all();
+
+        return view('pages.pembelian.edit')->with([
+            'items' => $items,
+            'barangs' => $barangs
+        ]);
     }
 
     /**
@@ -78,7 +114,26 @@ class PembelianController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $data = $request->all();
+        $this->validate($request, [
+            'harga_beli' => 'required'
+        ]);
+        $item = Pembelian::with('barang')->findOrFail($id);
+        $item->update($data);
+        if ($item) {
+            return redirect()
+                ->route('pembelian.index')
+                ->with([
+                    'success' => 'Data berhasil diubah'
+                ]);
+        } else {
+            return redirect()
+                ->back()
+                ->withInput()
+                ->with([
+                    'error' => 'Data gagal diubah'
+                ]);
+        }
     }
 
     /**
@@ -89,6 +144,20 @@ class PembelianController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $pembelian = Pembelian::find($id);
+        $pembelian->delete(); 
+        if ($pembelian) {
+            return redirect()
+                ->route('pembelian.index')
+                ->with([
+                    'success' => 'Data berhasil dihapus'
+                ]);
+        } else {
+            return redirect()
+                ->route('pembelian.index')
+                ->with([
+                    'error' => 'Data gagal dihapus'
+                ]);
+        }
     }
 }
