@@ -3,9 +3,10 @@
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\HakAksesController;
 use App\Http\Controllers\PenjualanController;
+use App\Http\Controllers\PembelianController;
+use App\Http\Controllers\BarangController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Auth;
-use App\Http\Controllers\BarangController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -28,5 +29,7 @@ Route::resource('hak-akses', HakAksesController::class);
 Route::resource('pengguna', UserController::class);
 
 Route::resource('penjualan', PenjualanController::class);
+
+Route::resource('pembelian', PembelianController::class);
 
 Route::resource('barang', BarangController::class);
