@@ -67,6 +67,10 @@ class PenjualanController extends Controller
             'id_barang'         => $data['id_barang']
         ]);
 
+        $barang = Barang::where('id', $data['id_barang'])->first();
+        $barang['stock'] = $barang['stock'] - $data['jumlah_penjualan'];
+        $barang->update();
+
         return redirect()->route('penjualan.index');
     }
 
@@ -105,9 +109,14 @@ class PenjualanController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(PenjualanRequest $request, $id)
+    public function update(Request $request, $id)
     {
-        
+        $data = $request->all();
+        $item = Penjualan::with('barang')->findOrFail($id);
+
+        $item->update($data);
+
+        return redirect()->route('penjualan.index');
     }
 
     /**

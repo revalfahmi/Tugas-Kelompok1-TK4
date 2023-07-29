@@ -13,7 +13,7 @@
                     <label for="jumlah_penjualan" class="form-control-label">Jumlah Penjualan</label>
                     <input type="number" name="jumlah_penjualan" value="{{ old('jumlah_penjualan') ? old('jumlah_penjualan') : $items->jumlah_penjualan }}" class="form-control @error('jumlah_penjualan')
                         is-invalid
-                    @enderror" />
+                    @enderror" disabled/>
                     @error('jumlah_penjualan')
                         <div class="text-muted">{{ $message }}</div>
                     @enderror
