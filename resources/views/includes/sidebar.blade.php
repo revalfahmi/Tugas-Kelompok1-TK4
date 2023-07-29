@@ -23,10 +23,10 @@
                 </li>
                 <li class="menu-title">Barang</li><!-- /.menu-title -->
                 <li class="">
-                    <a href="barang"> <i class="menu-icon fa fa-list"></i>Lihat Barang</a>
+                    <a href="{{ route('barang.index') }}"> <i class="menu-icon fa fa-list"></i>Lihat Barang</a>
                 </li>
                 <li class="">
-                    <a href="#"> <i class="menu-icon fa fa-plus"></i>Tambah Barang</a>
+                    <a href="{{ route('barang.create') }}"> <i class="menu-icon fa fa-plus"></i>Tambah Barang</a>
                 </li>
 
                 <li class="menu-title">Pembelian</li><!-- /.menu-title -->

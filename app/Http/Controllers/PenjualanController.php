@@ -107,7 +107,7 @@ class PenjualanController extends Controller
      */
     public function update(PenjualanRequest $request, $id)
     {
-        $item = Penjualan::
+        
     }
 
     /**
