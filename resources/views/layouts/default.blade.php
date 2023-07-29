@@ -6,7 +6,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Team 1 - Dashboard</title>
+    <title>Team 1 - DIM-TK4</title>
     <meta name="description" content="TEAM1TK4DIM">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
