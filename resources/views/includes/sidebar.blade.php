@@ -31,10 +31,10 @@
 
                 <li class="menu-title">Pembelian</li><!-- /.menu-title -->
                 <li class="">
-                    <a href="#"> <i class="menu-icon fa fa-list"></i>Lihat Pembelian</a>
+                    <a href="{{ route('pembelian.index') }}"> <i class="menu-icon fa fa-list"></i>Lihat Pembelian</a>
                 </li>
                 <li class="">
-                    <a href="#"> <i class="menu-icon fa fa-plus"></i>Tambah Pembelian</a>
+                    <a href="{{ route('pembelian.create') }}"> <i class="menu-icon fa fa-plus"></i>Tambah Pembelian</a>
                 </li>
 
                 <li class="menu-title">Penjualan</li><!-- /.menu-title -->

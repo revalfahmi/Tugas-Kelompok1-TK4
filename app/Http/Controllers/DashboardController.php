@@ -16,6 +16,9 @@ class DashboardController extends Controller
     
     public function index()
     {
+        $barangs = Barang::all();
+        $highestPrice = Penjualan::max('harga_jual');
+        $lowestPrice = Penjualan::min('harga_jual');
         $income = Penjualan::where('deleted_at', null)->sum('harga_jual');
         $sales = Penjualan::count();
         $pie = [
@@ -26,7 +29,10 @@ class DashboardController extends Controller
         return view('pages.dashboard')->with([
             'income'    => $income,
             'sales'     => $sales,
-            'pie'       => $pie
+            'pie'       => $pie,
+            'barangs'   => $barangs,
+            'highestPrice'  => $highestPrice,
+            'lowestPrice'   => $lowestPrice,
         ]);
     }
 }

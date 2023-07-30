@@ -7,12 +7,22 @@ use Illuminate\Http\Request;
 
 class BarangController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+    
     public function index()
     {
         $barangs = Barang::all();
         return view('pages.barang.index', ['barangs' => $barangs]);
     }
     
+    public function create()
+    {
+        return view('pages.barang.create');
+    }
+
     public function store(Request $request)
     {
         $this->validate($request,[
@@ -24,6 +34,7 @@ class BarangController extends Controller
         $barang->nama_barang = $request->input('nama_barang');
         $barang->keterangan = $request->input('keterangan');
         $barang->satuan = $request->input('satuan');
+        $barang->stock = $request->input('stock');
         $barang->save();
         if ($barang) {
             return redirect()
@@ -42,37 +53,38 @@ class BarangController extends Controller
 
     public function edit($id){
         $barang = Barang::findOrFail($id);
-        dd($barang);
-        return view('pages.barang.index', compact('barang'));
+        return view('pages.barang.edit', compact('barang'));
     }
 
-    // public function update(Request $request, $id){
-    //     $this->validate($request, [
-    //         'nama_barang' => 'required|string|max:155',
-    //         'keterangan' => 'required',
-    //         'satuan' => 'required'
-    //     ]);
-    //     $barang = Barang::findOrFail($id);
-    //     $barang->update([
-    //         'nama_barang' => $barang->nama_barang,
-    //         'keterangan' => $barang->keterangan,
-    //         'satuan' => $barang->satuan,
-    //     ]);
-    //     if ($barang) {
-    //         return redirect()
-    //             ->route('barang.index')
-    //             ->with([
-    //                 'success' => 'Data berhasil diubah'
-    //             ]);
-    //     } else {
-    //         return redirect()
-    //             ->back()
-    //             ->withInput()
-    //             ->with([
-    //                 'error' => 'Data gagal diubah'
-    //             ]);
-    //     }
-    // }
+    public function update(Request $request, $id){
+        $this->validate($request, [
+            'nama_barang' => 'required|string|max:155',
+            'keterangan' => 'required',
+            'satuan' => 'required',
+            'stock' => 'required'
+        ]);
+        $barang = Barang::findOrFail($id);
+        $barang->update([
+            'nama_barang' => $request->nama_barang,
+            'keterangan' => $request->keterangan,
+            'satuan' => $request->satuan,
+            'stock' => $request->stock
+        ]);
+        if ($barang) {
+            return redirect()
+                ->route('barang.index')
+                ->with([
+                    'success' => 'Data berhasil diubah'
+                ]);
+        } else {
+            return redirect()
+                ->back()
+                ->withInput()
+                ->with([
+                    'error' => 'Data gagal diubah'
+                ]);
+        }
+    }
 
     public function destroy($id){
         $barang = Barang::find($id);
